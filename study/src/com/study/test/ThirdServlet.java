@@ -15,7 +15,7 @@ public class ThirdServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();
-		out.println("<h1>Have A Nice Day!!</h1>");
+		out.println("<h1>æ»≥Á«œººø‰!!</h1>");
 		out.close();
 	}
 }
