@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
-<% String nowPage = "index2.jsp";
+<%
 String nowTitle = "홈";
 %>
 <!DOCTYPE html>
@@ -29,21 +29,10 @@ float:right;
 		<h1 align="center"><%=nowTitle%></h1>
 	</div>
 	<div id="nav">
-		<ul>
-			<li>목록</li>
-			<li>대여량 기준 정렬</li>
-			<li>대여된 책</li>
-			<li>대여 가능한 책</li>
-			<li>대여</li>
-			<li>반납</li>
-			<li>추가</li>
-		</ul>
+	<jsp:include page="navigation.jsp" />
 	</div>
 	<div id="content">
-	<br/>
-	<jsp:include page="<%=nowPage%>" />
 	</div>
-
 
 </body>
 </html>
