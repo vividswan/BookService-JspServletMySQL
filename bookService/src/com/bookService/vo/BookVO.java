@@ -1,4 +1,4 @@
-package com.book_service.vo;
+package com.bookService.vo;
 
 public class BookVO {
 	private int ID;
