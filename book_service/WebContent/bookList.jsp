@@ -1,4 +1,4 @@
-<%@page import="com.bookservice.vo.BookVO"%>
+<%@page import="com.book_service.vo.BookVO"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ page import = "java.util.ArrayList" %>
 <!DOCTYPE html>
