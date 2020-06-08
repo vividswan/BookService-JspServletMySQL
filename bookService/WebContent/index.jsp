@@ -17,10 +17,18 @@ widht:30%;
 height:100px;
 float:left;	
 }
-#content{
-width:70%;
-height: 100px;
-float:right;
+
+#emptySpace{
+	width: 70%;
+	height: 30px;
+	float: right;
+}
+
+
+#content {
+	width: 70%;
+	height: 70px;
+	float: right;
 }
 </style>
 </head>
@@ -31,6 +39,7 @@ float:right;
 	<div id="nav">
 	<jsp:include page="navigation.jsp" />
 	</div>
+		<div id="emptySpace"></div>
 	<div id="content">
 	</div>
 
