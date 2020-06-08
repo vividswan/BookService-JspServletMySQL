@@ -51,7 +51,7 @@ table td {
 	</div>
 		<div id="emptySpace"></div>
 	<div id="content">
-	${error}
+		${error}
 		<form action="memberInsert.action" method="post">
 			<table border="1">
 				<tbody>
