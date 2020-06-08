@@ -17,10 +17,11 @@ public class FrontController extends HttpServlet {
 		charset = config.getInitParameter("charset");
 		list = new HashMap<String, Controller>();
 		list.put("/bookInsert.action",new BookInsertController());
-		list.put("/bookSearch.action",new BookSearchController());
-		list.put("/bookUpdate.action",new BookUpdateController());
-		list.put("/bookDelete.action",new BookDeleteController());
+		list.put("/bookBorrow.action",new BookBorrowController());
 		list.put("/bookList.action",new BookListController());	
+		list.put("/bookSearch.action",new BookSearchController());
+		list.put("/bookReturnList.action",new BookReturnLIstController());
+		list.put("/bookReturn.action",new BookReturnController());
 	}
 	
 	@Override
@@ -30,6 +31,6 @@ public class FrontController extends HttpServlet {
 		String contextPath = request.getContextPath();
 		String path = url.substring(contextPath.length());
 		Controller subcontroller = list.get(path);
-		subController.execute(request,response);
+		subcontroller.execute(request,response);
 	}
 }
