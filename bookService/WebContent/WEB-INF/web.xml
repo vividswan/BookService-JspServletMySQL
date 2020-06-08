@@ -11,7 +11,7 @@
   </welcome-file-list>
   <servlet>
     <servlet-name>front</servlet-name>
-    <servlet-class>com.book_service.controller.FrontController</servlet-class>
+    <servlet-class>com.bookService.controller.FrontController</servlet-class>
     <init-param>
       <param-name>charset</param-name>
       <param-value>UTF-8</param-value>
@@ -20,5 +20,9 @@
   <servlet-mapping>
     <servlet-name>front</servlet-name>
     <url-pattern>*.action</url-pattern>
+  </servlet-mapping>
+    <servlet-mapping>
+    <servlet-name>front</servlet-name>
+    <url-pattern>*.action?*</url-pattern>
   </servlet-mapping>
 </web-app>
