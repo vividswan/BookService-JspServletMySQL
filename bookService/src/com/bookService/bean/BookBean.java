@@ -5,7 +5,7 @@ public class BookBean {
 	private String name;
 	private String author;
 	private int price;
-	private boolean isBorrow;
+	private boolean isBorrowed;
 	private int borrowCnt;
 	
 	public int getID() {
@@ -32,11 +32,11 @@ public class BookBean {
 	public void setPrice(int price) {
 		this.price = price;
 	}
-	public boolean isBorrow() {
-		return isBorrow;
+	public boolean isBorrowed() {
+		return isBorrowed;
 	}
-	public void setBorrow(boolean isBorrow) {
-		this.isBorrow = isBorrow;
+	public void setIsBorrowed(boolean isBorrowed) {
+		this.isBorrowed = isBorrowed;
 	}
 	public int getBorrowCnt() {
 		return borrowCnt;
