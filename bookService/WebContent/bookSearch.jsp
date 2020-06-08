@@ -39,7 +39,7 @@
 	</div>
 	<div id="emptySpace"></div>
 	<div id="content">
-
+		${error}
 		<form action="memberSearch.action" method="post">
 		대여할 책 ID를 입력하세요 : <input type="text" name="ID" />
 			<input type="submit" value=" 확인" />
