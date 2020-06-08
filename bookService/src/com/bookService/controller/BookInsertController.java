@@ -5,8 +5,8 @@ import java.io.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
 
-import com.bookService.bean.BookBean;
 import com.bookService.service.BookService;
+import com.bookService.vo.BookVO;
 
 public class BookInsertController implements Controller {
 	@Override
@@ -25,7 +25,7 @@ public class BookInsertController implements Controller {
 		int ID = Integer.parseInt(_ID);
 		int price = Integer.parseInt(_price);
 		
-		BookBean book = new BookBean();
+		BookVO book = new BookVO();
 		book.setID(ID);
 		book.setName(name);
 		book.setAuthor(author);
