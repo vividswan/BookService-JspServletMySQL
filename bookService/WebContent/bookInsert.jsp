@@ -28,9 +28,16 @@ table td {
 	float: left;
 }
 
+#emptySpace{
+	width: 70%;
+	height: 30px;
+	float: right;
+}
+
+
 #content {
 	width: 70%;
-	height: 100px;
+	height: 70px;
 	float: right;
 }
 </style>
@@ -42,6 +49,7 @@ table td {
 	<div id="nav">
 		<jsp:include page="navigation.jsp" />
 	</div>
+		<div id="emptySpace"></div>
 	<div id="content">
 		<form action="memberInsert.action" method="post">
 			<table border="1">
