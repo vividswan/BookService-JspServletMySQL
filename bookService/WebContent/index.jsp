@@ -1,6 +1,8 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
+<%@ page import="java.util.ArrayList"%>
+<%@ page import="com.bookService.bean.BookBean"%>
 <%
-String nowTitle = "홈";
+	String nowTitle = "홈";
 %>
 <!DOCTYPE html>
 <html>
@@ -13,17 +15,16 @@ String nowTitle = "홈";
 }
 
 #nav {
-widht:30%;
-height:100px;
-float:left;	
+	widht: 30%;
+	height: 100px;
+	float: left;
 }
 
-#emptySpace{
+#emptySpace {
 	width: 70%;
 	height: 30px;
 	float: right;
 }
-
 
 #content {
 	width: 70%;
@@ -37,11 +38,11 @@ float:left;
 		<h1 align="center"><%=nowTitle%></h1>
 	</div>
 	<div id="nav">
-	<jsp:include page="navigation.jsp" />
+		<jsp:include page="navigation.jsp" />
 	</div>
-		<div id="emptySpace"></div>
-	<div id="content">
-	</div>
+	<div id="emptySpace"></div>
+	<div id="content"></div>
+
 
 </body>
 </html>
