@@ -1,6 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%
-	String nowTitle = "대여";
+	String nowTitle = "ID 검색";
 %>
 <!DOCTYPE html>
 <html>
@@ -39,9 +39,8 @@
 	</div>
 	<div id="emptySpace"></div>
 	<div id="content">
-		${error}
-		<form action="memberSearch.action" method="post">
-		대여할 책 ID를 입력하세요 : <input type="text" name="ID" />
+		<form action="bookSearch.action" method="post">
+		찾고싶은 책의 ID를 입력하세요 : <input type="text" name="ID" />
 			<input type="submit" value=" 확인" />
 		</form>
 	</div>
