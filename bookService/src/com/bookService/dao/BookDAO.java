@@ -1,6 +1,11 @@
 package com.bookService.dao;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+
 import com.bookService.bean.BookBean;
 
 public class BookDAO {
@@ -49,6 +54,27 @@ public class BookDAO {
 		}
 	}
 	
+	public boolean duplicatationCheck(BookBean book) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		boolean DuplicateFlag = false;
+		try {
+			conn=connect();
+			pstmt = conn.prepareStatement("select * from book where id=?;");
+			pstmt.setInt(1, book.getID());
+			rs =  pstmt.executeQuery();
+			if(rs.next()) {
+				DuplicateFlag = true;
+			}
+		}catch (Exception e) {
+			System.out.println("오류 발생 : "+e);
+		}finally {
+			close(conn,pstmt,rs);
+		}
+		return DuplicateFlag;
+	}
+	
 	public void bookInsert(BookBean book) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -68,4 +94,104 @@ public class BookDAO {
 			close(conn,pstmt);
 		}
 	}
+	
+	public boolean bookUpdate(int ID) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		boolean isBorrowed = false;
+		int borrowCnt = 0;
+		try {
+			conn=connect();
+			pstmt = conn.prepareStatement("select * from book where id=?;");
+			pstmt.setInt(1, ID);
+			ResultSet rs =  pstmt.executeQuery();
+			if(rs.next()) {
+				isBorrowed = rs.getBoolean(5);
+				borrowCnt = rs.getInt(6);
+			}
+		}catch (Exception e) {
+			System.out.println("오류 발생 : "+e);
+		}finally {
+			close(conn,pstmt);
+		}
+		if(!isBorrowed) {
+			try {
+				conn=connect();
+				pstmt = conn.prepareStatement("update book set isBorrowed=? , borrowCnt=? where id=?;");
+				pstmt.setBoolean(1, true);
+				pstmt.setInt(2, borrowCnt+1);
+				pstmt.setInt(3, ID);
+				pstmt.executeUpdate();				
+			}catch (Exception e) {
+				System.out.println("오류 발생 : "+e);
+			}finally {
+				close(conn,pstmt);
+			}
+		}
+		return isBorrowed;
+	}
+	
+	public ArrayList<BookBean> bookList() {
+		ArrayList<BookBean> list = new ArrayList<BookBean>();
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		BookBean book = null;
+		try {
+			conn = connect();
+			pstmt = conn.prepareStatement("select * from book");
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				book = new BookBean();
+				book.setID(rs.getInt(1));
+				book.setName(rs.getString(2));
+				book.setAuthor(rs.getString(3));
+				book.setPrice(rs.getInt(4));
+				book.setIsBorrowed(rs.getBoolean(5));
+				book.setBorrowCnt(rs.getInt(6));
+				list.add(book);
+			}
+		}catch (Exception e) {
+			System.out.println("오류 발생 : "+e);
+		}finally {
+			close(conn,pstmt,rs);
+		}
+		return list;
+	}
+	
+	public void bookReturn(int ID){
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		boolean isBorrowed = false;
+		int borrowCnt = 0;
+		try {
+			conn=connect();
+			pstmt = conn.prepareStatement("select * from book where id=?;");
+			pstmt.setInt(1, ID);
+			ResultSet rs =  pstmt.executeQuery();
+			if(rs.next()) {
+				isBorrowed = rs.getBoolean(5);
+				borrowCnt = rs.getInt(6);
+			}
+		}catch (Exception e) {
+			System.out.println("오류 발생 : "+e);
+		}finally {
+			close(conn,pstmt);
+		}
+		if(!isBorrowed) {
+			try {
+				conn=connect();
+				pstmt = conn.prepareStatement("update book set isBorrowed=? where id=?;");
+				pstmt.setBoolean(1, false);
+				pstmt.setInt(2, ID);
+				pstmt.executeUpdate();				
+			}catch (Exception e) {
+				System.out.println("오류 발생 : "+e);
+			}finally {
+				close(conn,pstmt);
+			}
+		}
+	}
+	
 }
