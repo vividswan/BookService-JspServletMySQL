@@ -1,4 +1,4 @@
-<%@page import="com.book_service.vo.BookVO"%>
+<%@page import="com.bookService.bean.BookBean"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ page import = "java.util.ArrayList" %>
 <!DOCTYPE html>
@@ -8,12 +8,12 @@
 </head>
 <body>
 <%
-ArrayList<BookVO> list = (ArrayList<BookVO>) request.getAttribute("list");
+ArrayList<BookBean> list = (ArrayList<BookBean>) request.getAttribute("list");
 if(!list.isEmpty()){ %>
 	<table border="1">
 	<tr><th>ID</th><th>이름</th><th>저자</th>가격<th>대여 가능</th><th>대여 횟수</th></tr>
 	<% for(int i=0; i<list.size();i++){
-		BookVO book = list.get(i); %>
+		BookBean book = list.get(i); %>
 		<tr>
 			<td><%=book.getID() %></td>
 			<td><%=book.getName() %></td>
