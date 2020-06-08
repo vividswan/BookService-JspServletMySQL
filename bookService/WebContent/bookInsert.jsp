@@ -51,8 +51,7 @@ table td {
 	</div>
 		<div id="emptySpace"></div>
 	<div id="content">
-		${error}
-		<form action="memberInsert.action" method="post">
+		<form action="bookInsert.action" method="post" >
 			<table border="1">
 				<tbody>
 					<tr>
@@ -62,18 +61,18 @@ table td {
 					</tr>
 					<tr>
 						<td width="30%" align="center">이름</td>
-						<td width="70%" align="center"><input type="name" name="text"
+						<td width="70%" align="center"><input type="text" name="name"
 							size="20" style="width: 100%; border: 0;"></td>
 					</tr>
 					<tr>
 						<td width="30%" align="center">저자</td>
-						<td width="70%" align="center"><input type="author"
-							name="text" size="20" style="width: 100%; border: 0;"></td>
+						<td width="70%" align="center"><input type="text"
+							name="author" size="20" style="width: 100%; border: 0;"></td>
 					</tr>
 					<tr>
 						<td width="30%" align="center">가격</td>
-						<td width="70%" align="center"><input type="price"
-							name="text" size="20" style="width: 100%; border: 0;"></td>
+						<td width="70%" align="center"><input type="text"
+							name="price" size="20" style="width: 100%; border: 0;"></td>
 					</tr>
 				</tbody>
 			</table>
