@@ -11,7 +11,7 @@
 			<li>대여량 기준 정렬</li>
 			<li>대여된 책</li>
 			<li>대여 가능한 책</li>
-			<li>대여</li>
+			<li><a href="bookSearch.jsp">대여</a></li>
 			<li>반납</li>
 			<li><a href="bookInsert.jsp">추가</a></li>
 		</ul>
