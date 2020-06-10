@@ -195,7 +195,6 @@ public class BookDAO {
 			pstmt = conn.prepareStatement("select * from book where ID = ?");
 			pstmt.setInt(1, ID);
 			rs = pstmt.executeQuery();
-			System.out.println(ID);
 			if (rs.next()) {
 				book = new BookVO();
 				book.setID(rs.getInt(1));
@@ -212,5 +211,23 @@ public class BookDAO {
 		}
 		return book;
 	}
-
+	
+	public BookVO bookDelete(int ID) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		BookVO book = null;
+		
+		try {
+			conn = connect();
+			pstmt = conn.prepareStatement("delete from book where ID = ?");
+			pstmt.setInt(1, ID);
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			System.out.println("오류 발생 : " + e);
+		} finally {
+			close(conn, pstmt);
+		}
+		return book;
+	}
 }
