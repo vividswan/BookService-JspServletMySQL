@@ -39,9 +39,7 @@ public class BookInsertController implements Controller {
 			return;
 		}
 		else {
-			request.setAttribute("success", "대여되었습니다.");
-			request.setAttribute("nowTitle", "추가");
-			HttpUtil.forward(request, response, "/successPage.jsp");
+			HttpUtil.forward(request, response, "bookList.action");
 			return;
 		}
 	}
