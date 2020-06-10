@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.bookService.service.BookService;
 import com.bookService.vo.BookVO;
 
-public class BookReturnLIstController implements Controller {
+public class BookReturnListController implements Controller {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
