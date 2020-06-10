@@ -38,4 +38,8 @@ public class BookService {
 	public BookVO bookSearch(int ID) {
 		return dao.bookSearch(ID);
 	}
+	
+	public void bookDelete(int ID) {
+		dao.bookDelete(ID);
+	}
 }
