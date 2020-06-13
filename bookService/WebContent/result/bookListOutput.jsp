@@ -1,8 +1,8 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ page import="java.util.ArrayList"%>
-<%@ page import="com.bookService.bean.BookBean"%>
+<%@ page import="com.bookService.vo.BookVO"%>
 <%
-	String nowTitle = "목록";
+	String nowTitle="목록";
 %>
 <!DOCTYPE html>
 <html>
@@ -49,8 +49,8 @@ table,th,td {
 	<div id="emptySpace"></div>
 	<div id="content">
 		<%
-			ArrayList<BookBean> list = (ArrayList<BookBean>) request.getAttribute("list");
-		if (!list.isEmpty()) {
+			ArrayList<BookVO> list = (ArrayList<BookVO>) request.getAttribute("list");
+				if (!list.isEmpty()) {
 		%>
 		<table style="width:95%">
 			<tr>
@@ -63,7 +63,7 @@ table,th,td {
 			</tr>
 			<%
 				for (int i = 0; i < list.size(); i++) {
-				BookBean book = list.get(i);
+					BookVO book = list.get(i);
 			%>
 			<tr>
 				<td><%=book.getID()%></td>
