@@ -20,9 +20,7 @@ public class FrontController extends HttpServlet {
 		list.put("/bookBorrow.action",new BookBorrowController());
 		list.put("/bookList.action",new BookListController());	
 		list.put("/bookSearch.action",new BookSearchController());
-		list.put("/bookReturnList.action",new BookReturnListController());
 		list.put("/bookReturn.action",new BookReturnController());
-		list.put("/bookDeleteList.action", new BookDeleteListController());
 		list.put("/bookDelete.action", new BookDeleteController());
 	}
 	
