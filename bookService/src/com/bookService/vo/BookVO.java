@@ -1,12 +1,13 @@
 package com.bookService.vo;
 
-public class BookVO implements Comparable<BookVO>{
+public class BookVO{
 	private int ID;
 	private String name;
 	private String author;
 	private int price;
 	private boolean isBorrowed;
 	private int borrowCnt;
+	private boolean lastData = false;
 	
 	public int getID() {
 		return ID;
@@ -44,10 +45,10 @@ public class BookVO implements Comparable<BookVO>{
 	public void setBorrowCnt(int borrowCnt) {
 		this.borrowCnt = borrowCnt;
 	}
-	@Override
-	public int compareTo(BookVO b) {
-		if(this.borrowCnt < b.borrowCnt) return 1;
-		else if (this.borrowCnt > b.borrowCnt) return -1;
-		else return 0;
-	}	
+	public boolean isLastData() {
+		return lastData;
+	}
+	public void setLastData(boolean lastData) {
+		this.lastData = lastData;
+	}
 }
