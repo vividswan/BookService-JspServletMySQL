@@ -14,6 +14,7 @@ public class BookBorrowController implements Controller {
 		String path = null;
 		if(_ID.isEmpty()) {
 			request.setAttribute("error", "ID를 입력하시오.");
+			request.setAttribute("nowTitle", "대여");
 			HttpUtil.forward(request, response, "/errorPage.jsp");
 			return;
 		}
