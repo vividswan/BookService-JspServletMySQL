@@ -42,17 +42,17 @@ public class BookListController implements Controller {
 		}
 		
 		if(indexFlag != null &&indexFlag.equals("firstPage")) {
-			HttpUtil.forward(request, response, "/result/bookListOutputFirst.jsp");
+			HttpUtil.forward(request, response, "/result/bookListOutputFirst.jsp?upperSeqNo="+upperSeqNo);
 		}else if(indexFlag != null &&indexFlag.equals("sortPage")) {
-			HttpUtil.forward(request, response, "/result/bookListOutputSort.jsp");
+			HttpUtil.forward(request, response, "/result/bookListOutputSort.jsp?upperSeqNo="+upperSeqNo);
 		}else if(indexFlag != null &&indexFlag.equals("borrowedBookPage")) {
-			HttpUtil.forward(request, response, "/result/bookListOutputBorrow.jsp");
+			HttpUtil.forward(request, response, "/result/bookListOutputBorrow.jsp?upperSeqNo="+upperSeqNo);
 		}else if(indexFlag != null &&indexFlag.equals("notBorrowedBookPage")) {
-			HttpUtil.forward(request, response, "/result/bookListOutputNotBorrow.jsp");
+			HttpUtil.forward(request, response, "/result/bookListOutputNotBorrow.jsp?upperSeqNo"+upperSeqNo);
 		}else if(indexFlag != null &&indexFlag.equals("bookReturn")) {
-			HttpUtil.forward(request, response, "/result/bookReturnListOutput.jsp");
+			HttpUtil.forward(request, response, "/result/bookReturnListOutput.jsp?upperSeqNo"+upperSeqNo);
 		}else if(indexFlag != null && indexFlag.equals("bookDeletePage")) {
-			HttpUtil.forward(request, response, "/result/bookDeleteListOutput.jsp");
+			HttpUtil.forward(request, response, "/result/bookDeleteListOutput.jsp?upperSeqNo="+upperSeqNo);
 		}else HttpUtil.forward(request, response, "/result/bookListOutput.jsp?upperSeqNo="+upperSeqNo);
 	}
 	
