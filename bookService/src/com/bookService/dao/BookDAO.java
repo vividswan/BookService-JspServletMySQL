@@ -146,10 +146,11 @@ public class BookDAO {
 		BookVO book = null;
 		try {
 			conn = connect();
-			pstmt = conn.prepareStatement("select * from book where ID > "+upperSeqNo);
+			pstmt = conn.prepareStatement("select * from book where ID > " + upperSeqNo);
 			rs = pstmt.executeQuery();
-			for(int i=0;i<5;i++) {
-				if(!rs.next()) break;
+			for (int i = 0; i < 5; i++) {
+				if (!rs.next())
+					break;
 				book = new BookVO();
 				book.setID(rs.getInt(1));
 				book.setName(rs.getString(2));
@@ -159,7 +160,8 @@ public class BookDAO {
 				book.setBorrowCnt(rs.getInt(6));
 				list.add(book);
 			}
-			if(!rs.next()) book.setLastData(true);
+			if (book != null && !rs.next())
+				book.setLastData(true);
 		} catch (Exception e) {
 			System.out.println("오류 발생 : " + e);
 		} finally {
@@ -167,7 +169,7 @@ public class BookDAO {
 		}
 		return list;
 	}
-	
+
 	public ArrayList<BookVO> bookListByBorrowCnt(int upperSeqNo) {
 		ArrayList<BookVO> list = new ArrayList<BookVO>();
 		Connection conn = null;
@@ -179,15 +181,43 @@ public class BookDAO {
 			conn = connect();
 			pstmt = conn.prepareStatement("select * from book order by borrowCnt desc");
 			rs = pstmt.executeQuery();
-			while (rs.next()) {
-				book = new BookVO();
-				book.setID(rs.getInt(1));
-				book.setName(rs.getString(2));
-				book.setAuthor(rs.getString(3));
-				book.setPrice(rs.getInt(4));
-				book.setIsBorrowed(rs.getBoolean(5));
-				book.setBorrowCnt(rs.getInt(6));
-				list.add(book);
+			if (upperSeqNo == 0) {
+				for (int i = 0; i < 5; i++) {
+					if (!rs.next())
+						break;
+					book = new BookVO();
+					book.setID(rs.getInt(1));
+					book.setName(rs.getString(2));
+					book.setAuthor(rs.getString(3));
+					book.setPrice(rs.getInt(4));
+					book.setIsBorrowed(rs.getBoolean(5));
+					book.setBorrowCnt(rs.getInt(6));
+					list.add(book);
+				}
+				if (book != null && !rs.next())
+					book.setLastData(true);
+			} else {
+				while (rs.next()) {
+					if (upperSeqNo != rs.getInt(1))
+						continue;
+					else {
+						for (int i = 0; i < 5; i++) {
+							if (!rs.next())
+								break;
+							book = new BookVO();
+							book.setID(rs.getInt(1));
+							book.setName(rs.getString(2));
+							book.setAuthor(rs.getString(3));
+							book.setPrice(rs.getInt(4));
+							book.setIsBorrowed(rs.getBoolean(5));
+							book.setBorrowCnt(rs.getInt(6));
+							list.add(book);
+						}
+						if (book != null && !rs.next())
+							book.setLastData(true);
+						break;
+					}
+				}
 			}
 		} catch (Exception e) {
 			System.out.println("오류 발생 : " + e);
@@ -196,7 +226,7 @@ public class BookDAO {
 		}
 		return list;
 	}
-	
+
 	public ArrayList<BookVO> bookListNotBorrowed(int upperSeqNo) {
 		ArrayList<BookVO> list = new ArrayList<BookVO>();
 		Connection conn = null;
@@ -206,9 +236,11 @@ public class BookDAO {
 		BookVO book = null;
 		try {
 			conn = connect();
-			pstmt = conn.prepareStatement("select * from book where isBorrowed='false'");
+			pstmt = conn.prepareStatement("select * from book where isBorrowed='false' AND ID > " + upperSeqNo);
 			rs = pstmt.executeQuery();
-			while (rs.next()) {
+			for (int i = 0; i < 5; i++) {
+				if (!rs.next())
+					break;
 				book = new BookVO();
 				book.setID(rs.getInt(1));
 				book.setName(rs.getString(2));
@@ -218,6 +250,8 @@ public class BookDAO {
 				book.setBorrowCnt(rs.getInt(6));
 				list.add(book);
 			}
+			if (book != null && !rs.next())
+				book.setLastData(true);
 		} catch (Exception e) {
 			System.out.println("오류 발생 : " + e);
 		} finally {
@@ -225,7 +259,7 @@ public class BookDAO {
 		}
 		return list;
 	}
-	
+
 	public ArrayList<BookVO> bookListBorrowed(int upperSeqNo) {
 		ArrayList<BookVO> list = new ArrayList<BookVO>();
 		Connection conn = null;
@@ -235,9 +269,11 @@ public class BookDAO {
 		BookVO book = null;
 		try {
 			conn = connect();
-			pstmt = conn.prepareStatement("select * from book where isBorrowed");
+			pstmt = conn.prepareStatement("select * from book where isBorrowed AND ID > " + upperSeqNo);
 			rs = pstmt.executeQuery();
-			while (rs.next()) {
+			for (int i = 0; i < 5; i++) {
+				if (!rs.next())
+					break;
 				book = new BookVO();
 				book.setID(rs.getInt(1));
 				book.setName(rs.getString(2));
@@ -247,6 +283,8 @@ public class BookDAO {
 				book.setBorrowCnt(rs.getInt(6));
 				list.add(book);
 			}
+			if (book != null && !rs.next())
+				book.setLastData(true);
 		} catch (Exception e) {
 			System.out.println("오류 발생 : " + e);
 		} finally {
@@ -254,8 +292,7 @@ public class BookDAO {
 		}
 		return list;
 	}
-	
-	
+
 	public void bookReturn(int ID) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -272,14 +309,14 @@ public class BookDAO {
 			close(conn, pstmt);
 		}
 	}
-	
+
 	public BookVO bookSearch(int ID) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		
+
 		BookVO book = null;
-		
+
 		try {
 			conn = connect();
 			pstmt = conn.prepareStatement("select * from book where ID = ?");
@@ -301,13 +338,13 @@ public class BookDAO {
 		}
 		return book;
 	}
-	
+
 	public BookVO bookDelete(int ID) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
-		
+
 		BookVO book = null;
-		
+
 		try {
 			conn = connect();
 			pstmt = conn.prepareStatement("delete from book where ID = ?");
