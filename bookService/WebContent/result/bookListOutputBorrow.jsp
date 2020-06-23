@@ -3,6 +3,8 @@
 <%@ page import="com.bookService.vo.BookVO"%>
 <%
 	String nowTitle="대여된 책";
+boolean isLast = false;
+int lastID = 0;
 %>
 <!DOCTYPE html>
 <html>
@@ -64,7 +66,8 @@ table,th,td {
 			<%
 				for (int i = 0; i < list.size(); i++) {
 					BookVO book = list.get(i);
-					if(!book.isBorrowed()) continue;
+					isLast = book.isLastData();
+					lastID=book.getID();
 			%>
 			<tr>
 				<td><%=book.getID()%></td>
@@ -88,6 +91,9 @@ table,th,td {
 			}
 			%>
 		</table>
+			<%if(!isLast &&!list.isEmpty()){ %>
+			<a href='pageUtil.jsp?path=borrowedBookPage&LAST_SEQ_NO=<%=lastID %>'>다음 페이지</a>
+		<%} %>
 	</div>
 
 </body>
