@@ -1,9 +1,11 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="com.bookService.vo.BookVO"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	String nowTitle="홈";
-request.setAttribute("indexFlag", "notFirstPage");
+boolean isLast = false;
+int lastID = 0;
 %>
 <!DOCTYPE html>
 <html>
@@ -33,9 +35,9 @@ request.setAttribute("indexFlag", "notFirstPage");
 	float: right;
 }
 
-table,th,td {
-	border:1px solid black;
-	border-collapse:collapse;
+table, th, td {
+	border: 1px solid black;
+	border-collapse: collapse;
 	text-align: center;
 }
 </style>
@@ -53,7 +55,7 @@ table,th,td {
 			ArrayList<BookVO> list = (ArrayList<BookVO>) request.getAttribute("list");
 				if (!list.isEmpty()) {
 		%>
-		<table style="width:95%">
+		<table style="width: 95%">
 			<tr>
 				<th>ID</th>
 				<th>이름</th>
@@ -65,6 +67,8 @@ table,th,td {
 			<%
 				for (int i = 0; i < list.size(); i++) {
 					BookVO book = list.get(i);
+					isLast = book.isLastData();
+					lastID=book.getID();
 			%>
 			<tr>
 				<td><%=book.getID()%></td>
@@ -88,6 +92,9 @@ table,th,td {
 			}
 			%>
 		</table>
+		<%if(!isLast&&!list.isEmpty()){ %>
+			<a href='index.jsp?LAST_SEQ_NO=<%=lastID %>'>다음 페이지</a>
+		<%} %>
 	</div>
 
 </body>
