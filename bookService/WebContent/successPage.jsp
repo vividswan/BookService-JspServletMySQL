@@ -4,7 +4,7 @@
 <head>
 <title>Success Page</title>
 <style>
-#heaer {
+#header {
 	width: 100%;
 	height: 40px;
 }
