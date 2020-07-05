@@ -17,7 +17,7 @@ table td {
 	padding: 5px;
 }
 
-#heaer {
+#header {
 	width: 100%;
 	height: 40px;
 }
