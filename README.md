@@ -10,25 +10,25 @@ JSP, Servlet, Apache Tomcat, MySQL을 활용한 CRUD 도서관 프로그램
 
 #### mvc2 패턴
 
-![](/200709-1.png)
+![](/images/200709-1.png)
 
 #### Front Controller Servlet
 
 ##### web.xml 매핑
 
-![](/200709-2.png)
+![](/images/200709-2.png)
 
 ##### \*.action의 url 패턴과 필요한 Controller 매핑
 
-![](/200709-3.png)
+![](/images/200709-3.png)
 
 #### Controller Servlet
 
 ##### 유지보수를 위한 Controller 인터페이스 구현
 
-![](/200709-4.png)
-![](/200709-5.png)
-![](/200709-6.png)
+![](/images/200709-4.png)
+![](/images/200709-5.png)
+![](/images/200709-6.png)
 
 #### Service & DAO Servlet
 
@@ -36,7 +36,7 @@ JSP, Servlet, Apache Tomcat, MySQL을 활용한 CRUD 도서관 프로그램
 
 ##### DAO Servlet : 데이터베이스 연결 및 조작
 
-![](/200709-7.png)
+![](/images/200709-7.png)
 
 ---
 
@@ -46,4 +46,4 @@ JSP, Servlet, Apache Tomcat, MySQL을 활용한 CRUD 도서관 프로그램
 
 #### 실행화면
 
-![](/200709-8.mp4)
+![](/images/200709-8.gif)
